@@ -1,0 +1,25 @@
+[package]
+name = "test_bin"
+version = "0.1.0"
+authors = ["Michael Mc Donnell <michael@mcdonnell.dk>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+documentation = "https://github.com/MichaelMcDonnell/test_bin"
+homepage = "https://github.com/MichaelMcDonnell/test_bin"
+repository = "https://github.com/MichaelMcDonnell/test_bin"
+readme = "README.md"
+description = """
+A crate for getting the crate binary in an integration test.
+"""
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+name = "test_bin"
+path = "src/lib.rs"
+
+[[bin]]
+name = "test_bin_test"
+path = "src/bin.rs"
