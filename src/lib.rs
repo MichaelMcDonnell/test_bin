@@ -36,12 +36,7 @@ pub fn get_test_bin(bin_name: &str) -> std::process::Command {
     // Create full path to binary
     let mut path = get_test_bin_dir();
     path.push(bin_name);
-
-    // Add executable extension
-    const EXE_EXT: &str = std::env::consts::EXE_EXTENSION;
-    if !EXE_EXT.is_empty() && !path.ends_with(EXE_EXT) {
-        path.push(EXE_EXT);
-    }
+    path.set_extension(std::env::consts::EXE_EXTENSION);
 
     assert!(path.exists());
 
