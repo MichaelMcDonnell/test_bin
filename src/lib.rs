@@ -56,7 +56,9 @@ fn get_test_bin_dir() -> std::path::PathBuf {
     let current_dir = current_exe
         .parent()
         .expect("Failed to get the directory of the integration test binary");
-    assert!(current_dir.ends_with("target/debug/deps"));
+    assert!(
+        current_dir.ends_with("target/debug/deps") || current_dir.ends_with("target/release/deps")
+    );
 
     let test_bin_dir = current_dir
         .parent()
