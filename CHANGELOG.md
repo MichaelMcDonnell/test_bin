@@ -29,8 +29,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Use the correct folder so the integration tests are actually run. By [@MichaelMcDonnell](https://github.com/MichaelMcDonnell).
 
-## [0.1.0] - 2019-10-05
+## [0.1.0] - 2019-10-05 [YANKED]
 
 ### Added
 
 - The initial release by [@MichaelMcDonnell](https://github.com/MichaelMcDonnell).
+
+[Unreleased]: https://github.com/MichaelMcDonnell/test_bin/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/MichaelMcDonnell/test_bin/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/MichaelMcDonnell/test_bin/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/MichaelMcDonnell/test_bin/compare/v0.1.0...v0.2.0
