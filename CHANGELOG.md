@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Windows and cross (Linux musl) CI by [@MichaelMcDonnell](https://github.com/MichaelMcDonnell).
+
+### Fixed
+
+- The `Cargo.lock` file was updated by [@MichaelMcDonnell](https://github.com/MichaelMcDonnell).
+
 ## [0.4.0] - 2022-01-26
 
 ### Added
