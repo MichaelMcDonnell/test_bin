@@ -9,7 +9,7 @@ If you are writing a command-line interface app then it is useful to write an in
 Here is the basic usage:
 
 ```rust
-let output = test_bin::get_test_bin!("my_cli_app")
+let output = test_bin::get_test_bin("my_cli_app")
     .output()
     .expect("Failed to start my_binary");
 assert_eq!(
@@ -18,19 +18,11 @@ assert_eq!(
 );
 ```
 
-NOTE: The `get_test_bin` function was deprecated in version 0.5.0. Please use
-the macro instead.
-
 ## Acknowledgements
 
 The `cargo` and `ripgrep` crates were used as inspiration. They both test their
 binaries using a similar approach. The `cargo` crate's documentation and license
 was used as a starting point.
-
-Thanks to Ewan Higgs (@ehiggs), and Chris Greenaway (@ChrisGreenaway) for their
-fixes.
-
-The code was later changed to a macro via a suggestion by Ed Page (@epage).
 
 ## Contributing
 
