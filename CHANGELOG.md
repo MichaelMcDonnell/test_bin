@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-### Fixed
+### Changed
+- Undeprecated the `get_test_bin` function. By [@MichaelMcDonnell](https://github.com/MichaelMcDonnell) at the suggestion of [@epage](https://github.com/epage). Cargo was changed in a way that made the macro unnecessary.
+- Use new `CARGO_BIN_EXE_` environment variable. By [@MichaelMcDonnell](https://github.com/MichaelMcDonnell) at the suggestion of [@epage](https://github.com/epage).
 
-- Undeprecated the `get_test_bin` function by [@MichaelMcDonnell](https://github.com/MichaelMcDonnell) at the suggestion of [@epage](https://github.com/epage). Cargo was changed in a way that made the macro unnecessary.
+### Fixed
 
 ## [0.5.0] - 2025-07-11
 

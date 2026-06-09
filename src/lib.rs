@@ -12,7 +12,7 @@
 //! ```ignore
 //! let output = test_bin::get_test_bin("my_cli_app")
 //!     .output()
-//!     .expect("Failed to start my_binary");
+//!     .expect("Failed to start my_cli_app");
 //! assert_eq!(
 //!     String::from_utf8_lossy(&output.stdout),
 //!     "Output from my CLI app!\n"
@@ -44,20 +44,26 @@
 ///
 /// It panics on error. This is by design so the test that uses it fails.
 pub fn get_test_bin(bin_name: &str) -> std::process::Command {
-    // Create full path to binary
-    let mut path = get_test_bin_dir();
-    path.push(bin_name);
-    path.set_extension(std::env::consts::EXE_EXTENSION);
+    let mut path = std::path::PathBuf::new();
+    // Try using the new CARGO_BIN_EXE_ environment variable.
+    let bin_path_key = format!("CARGO_BIN_EXE_{}", bin_name);
+    if let Ok(bin_path) = std::env::var(bin_path_key) {
+        path.push(bin_path);
+    } else {
+        // Use the legacy fallback method of finding the path.
+        // Create full path to binary.
+        path = get_test_bin_dir_fallback();
+        path.push(bin_name);
+        path.set_extension(std::env::consts::EXE_EXTENSION);
 
-    if !path.exists() {
-        // Print all environment variables.
-        for (key, value) in std::env::vars() {
-            println!("{key}: {value}");
+        if !path.exists() {
+            // Print all environment variables.
+            for (key, value) in std::env::vars() {
+                println!("{key}: {value}");
+            }
+            let path: &'static str = env!("PATH");
+            println!("the $PATH variable at the time of compiling was: {path}");
         }
-        let path: &'static str = env!("PATH");
-        println!("the $PATH variable at the time of compiling was: {path}");
-        let build_dir = std::env::var("CARGO_BIN_EXE_test_bin").unwrap();
-        panic!("Environment variable is {}", build_dir);
     }
 
     assert!(path.exists());
@@ -71,7 +77,7 @@ pub fn get_test_bin(bin_name: &str) -> std::process::Command {
 /// # Remarks
 ///
 /// It panics on error. This is by design so the test that uses it fails.
-fn get_test_bin_dir() -> std::path::PathBuf {
+fn get_test_bin_dir_fallback() -> std::path::PathBuf {
     // Cargo puts the integration test binary in target/debug/deps
     let current_exe =
         std::env::current_exe().expect("Failed to get the path of the integration test binary");
