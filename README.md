@@ -9,17 +9,17 @@ If you are writing a command-line interface app then it is useful to write an in
 Here is the basic usage:
 
 ```rust
-let output = test_bin::get_test_bin!("my_cli_app")
+let output = test_bin::get_test_bin("my_cli_app")
     .output()
-    .expect("Failed to start my_binary");
+    .expect("Failed to start my_cli_app");
 assert_eq!(
     String::from_utf8_lossy(&output.stdout),
     "Output from my CLI app!\n"
 );
 ```
 
-NOTE: The `get_test_bin` function was deprecated in version 0.5.0. Please use
-the macro instead.
+NOTE: The `get_test_bin` function was deprecated in version 0.5.0 in favor
+of the `get_test_bin!` macro and then undeprecated in version 0.6.0.
 
 ## Acknowledgements
 
@@ -30,7 +30,9 @@ was used as a starting point.
 Thanks to Ewan Higgs (@ehiggs), and Chris Greenaway (@ChrisGreenaway) for their
 fixes.
 
-The code was later changed to a macro via a suggestion by Ed Page (@epage).
+The code was later changed to a macro via a suggestion by Ed Page (@epage). The
+function was later changed and undeprecated again via a suggestion by Ed Page
+(@epage).
 
 ## Contributing
 
